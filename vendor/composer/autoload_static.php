@@ -34,6 +34,7 @@ class ComposerStaticInite9707f1936aed0d097f1b69a9d2712bb
     );
 
     public static $classMap = array (
+        'BowlingGame' => __DIR__ . '/../..' . '/src/BowlingGame.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'PHPUnit\\Event\\Application\\Finished' => __DIR__ . '/..' . '/phpunit/phpunit/src/Event/Events/Application/Finished.php',
         'PHPUnit\\Event\\Application\\FinishedSubscriber' => __DIR__ . '/..' . '/phpunit/phpunit/src/Event/Events/Application/FinishedSubscriber.php',

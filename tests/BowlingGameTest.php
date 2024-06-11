@@ -10,7 +10,9 @@ final class BowlingGameTest extends TestCase
     }
     public function test_bowling_game(): void
     {
-        $this->assertEquals("", "");
+        $this->bowlingGame->roll(1);
+        $this->bowlingGame->roll(2);
+        $this->assertEquals(3, $this->bowlingGame->score());
     }
 
         
