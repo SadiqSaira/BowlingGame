@@ -36,7 +36,28 @@ final class BowlingGameTest extends TestCase
         $this->assertEquals(40, $this->bowlingGame->score());
     }
     
+    
     public function test_recording_total_score_of_ten_frame_gutter_game(): void
+    {
+        $allScores = [
+            0, 0,
+            0, 0,
+            0, 0,
+            0, 0,
+            0, 0,
+            0, 0,
+            0, 0,
+            0, 0,
+            0, 0,
+            0, 0
+            ];
+        foreach ($allScores as $score) {
+            $this->bowlingGame->roll($score);
+        }
+        $this->assertEquals(0, $this->bowlingGame->score());
+    }
+
+    public function test_add_bonus_in_total_score_when_spare_frame(): void
     {
         $allScores = [
             2, 2,
@@ -55,23 +76,23 @@ final class BowlingGameTest extends TestCase
         }
         $this->assertEquals(72, $this->bowlingGame->score());
     }
-    public function test_add_bonus_in_total_score_when_spare_frame(): void
+    public function test_add_bonus_in_total_score_when_strike_frame(): void
     {
         $allScores = [
-            0, 0,
-            0, 0,
-            0, 0,
-            0, 0,
-            0, 0,
-            0, 0,
-            0, 0,
-            0, 0,
-            0, 0,
-            0, 0
+            2, 2,
+            10, 0,
+            2, 4,
+            10, 0,
+            3, 4,
+            1, 4,
+            6, 2,
+            4, 4,
+            1, 3,
+            0, 5
             ];
         foreach ($allScores as $score) {
             $this->bowlingGame->roll($score);
         }
-        $this->assertEquals(0, $this->bowlingGame->score());
+        $this->assertEquals(80, $this->bowlingGame->score());
     }
 }
