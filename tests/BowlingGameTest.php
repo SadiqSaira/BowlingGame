@@ -95,4 +95,63 @@ final class BowlingGameTest extends TestCase
         }
         $this->assertEquals(80, $this->bowlingGame->score());
     }
+    public function test_add_bonus_in_total_score_when_spare_strike_frame(): void
+    {
+        $allScores = [
+            2, 2,
+            10, 0,
+            2, 4,
+            10, 0,
+            3, 4,
+            5, 5,
+            6, 2,
+            4, 4,
+            1, 3,
+            0, 5
+            ];
+        foreach ($allScores as $score) {
+            $this->bowlingGame->roll($score);
+        }
+        $this->assertEquals(91, $this->bowlingGame->score());
+    }
+    public function test_add_bonus_in_total_score_when_strike_in_last_frame(): void
+    {
+        $allScores = [
+            2, 2,
+            10, 0,
+            2, 4,
+            10, 0,
+            3, 4,
+            5, 5,
+            6, 2,
+            4, 4,
+            1, 3,
+            10, 3,
+            3
+            ];
+        foreach ($allScores as $score) {
+            $this->bowlingGame->roll($score);
+        }
+        $this->assertEquals(102, $this->bowlingGame->score());
+    }
+    public function test_add_bonus_in_total_score_when_spare_in_last_frame(): void
+    {
+        $allScores = [
+            2, 2,
+            10, 0,
+            2, 4,
+            4, 0,
+            3, 4,
+            5, 5,
+            6, 2,
+            4, 4,
+            1, 3,
+            5, 5,
+            4
+            ];
+        foreach ($allScores as $score) {
+            $this->bowlingGame->roll($score);
+        }
+        $this->assertEquals(87, $this->bowlingGame->score());
+    }
 }
